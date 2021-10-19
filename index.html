@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en" class="" id="html">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="output.css" />
+    <link rel="stylesheet" href="customCSS.css" />
+
+    <title>Geany Color</title>
+</head>
+
+<body>
+    <main class="flex flex-col lg:flex-row">
+        <div class="fixed bottom-0 flex items-center justify-around w-full h-16 bg-gray-100 lg:hidden dark:bg-gray-800">
+
+            <button class="gen-btn" id="smgenButton">Generate</button>
+            <button class="hidden gen-btn" id="smgradgenButton">Generate</button>
+            <button class="hidden gen-btn" id="smradgenButton">Generate</button>
+            <button class="hidden gen-btn" id="smpalletegenButton">Generate</button>
+            <button class="hidden btn-trans" id="smemptyButton"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp;</button>
+            <button class="px-3 py-2 ml-16 bg-gray-300 rounded-btn" id="burger">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
+                        clip-rule="evenodd" />
+                </svg>
+            </button>
+        </div>
+        <div class="fixed z-50 flex-col hidden w-64 h-screen px-4 py-8 overflow-scroll bg-white border-r dark:bg-gray-800 dark:border-gray-600 lg:flex lg:static"
+            id="nav">
+            <div class="flex items-center justify-between">
+
+                <h2 class="text-xl font-semibold text-gray-800 dark:text-white md:text-2xl">
+                    Geany Color
+                </h2>
+                <h2 class="bg-gray-300 cursor-pointer rounded-btn lg:hidden" id="cut">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+
+                </h2>
+            </div>
+
+            <div class="flex flex-col items-center justify-around flex-1 mt-6 ">
+                <nav class="grid gap-3 ">
+                    <a class=" active nav-btn-1" href="#" id="color">
+                        <span class="mx-4 font-medium">Colors</span>
+                    </a>
+
+                    <a class=" nav-btn" href="#" id="gradient">
+                        <span class="mx-4 font-medium">Gradient</span>
+                    </a>
+
+                    <a class=" nav-btn" href="#" id="radialGradient">
+                        <span class="mx-4 font-medium">Radial-Gradient</span>
+                    </a>
+                    <a class=" nav-btn" href="#" id="pallete">
+                        <span class="mx-4 font-medium">Color Pallete</span>
+                    </a>
+
+                    <a class=" nav-btn" href="#" id="RGB">
+                        <span class="mx-4 font-medium">Hex to RGB</span>
+                    </a>
+                    <a class=" nav-btn" href="#">
+                        <span class="flex items-center mx-4 font-medium">Dark
+                            <input type="checkbox" id="darkMode" class="ml-4 toggle-sm" />
+                        </span>
+                    </a>
+                </nav>
+                <div class="hidden mt-8 lg:block">
+                    <div class="items-center justify-center w-full h-20" id="btn1">
+                        <button class="flex items-center gen-btn" id="genButton">
+                            <svg class="w-5 h-5 mx-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <span class="mx-1">Refresh</span>
+                        </button>
+                    </div>
+                    <div class="items-center justify-center hidden h-20 w-ful" id="btn2">
+                        <button class="flex items-center gen-btn" id="gradgenButton">
+                            <svg class="w-5 h-5 mx-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <span class="mx-1">Refresh</span>
+                        </button>
+                    </div>
+                    <div class="items-center justify-center hidden w-full h-20" id="btn3">
+                        <button class="flex items-center gen-btn" id="radgenButton">
+                            <svg class="w-5 h-5 mx-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <span class="mx-1">Refresh</span>
+                        </button>
+                    </div>
+                    <div class="items-center justify-center hidden w-full h-20" id="btn4">
+                        <button class="flex items-center gen-btn" id="palletegenButton">
+                            <svg class="w-5 h-5 mx-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <span class="mx-1">Refresh</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ----------------------------------------------------------------------- -->
+        <!--                             color part here                                                                                            -->
+        <!-- ----------------------------------------------------------------------- -->
+        <section id="colorPart" class="w-full h-screen overflow-scroll bg-gray-200 dark:bg-gray-500 ">
+            <section class="w-full h-screen">
+                <div class="color-grid">
+                    <div class="w-full h-20 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                        <div class="flex items-center h-full">
+                            <div class="w-1/2 h-full rounded" id="bg1"></div>
+                            <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                                <div class="text-white">
+                                    <textarea class="w-1 opacity-0" id="hexCode1">#ffba49</textarea>
+                                </div>
+                                <div>
+                                    <button class="btn" onclick="copyMeOnClipboard(hexCode1)">
+                                        Copy
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full h-20 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                        <div class="flex items-center h-full">
+                            <div class="w-1/2 h-full rounded" id="bg2"></div>
+                            <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                                <div class="text-white">
+                                    <textarea class="w-1 opacity-0" id="hexCode2">#ef5b5b</textarea>
+                                </div>
+                                <div>
+                                    <button class="btn" onclick="copyMeOnClipboard(hexCode2)">
+                                        Copy
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full h-20 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                        <div class="flex items-center h-full">
+                            <div class="w-1/2 h-full rounded" id="bg3"></div>
+                            <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                                <div class="text-white">
+                                    <textarea class="w-1 opacity-0" id="hexCode3">#20a39e</textarea>
+                                </div>
+                                <div>
+                                    <button class="btn" onclick="copyMeOnClipboard(hexCode3)">
+                                        Copy
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full h-20 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                        <div class="flex items-center h-full">
+                            <div class="w-1/2 h-full rounded" id="bg4"></div>
+                            <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                                <div class="text-white">
+                                    <textarea class="w-1 opacity-0" id="hexCode4">#345995</textarea>
+                                </div>
+                                <div>
+                                    <button class="btn" onclick="copyMeOnClipboard(hexCode4)">
+                                        Copy
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full h-20 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                        <div class="flex items-center h-full">
+                            <div class="w-1/2 h-full rounded" id="bg5"></div>
+                            <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                                <div class="text-white">
+                                    <textarea class="w-1 opacity-0" id="hexCode5">#fb4d3d</textarea>
+                                </div>
+                                <div>
+                                    <button class="btn" onclick="copyMeOnClipboard(hexCode5)">
+                                        Copy
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full h-20 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                        <div class="flex items-center h-full">
+                            <div class="w-1/2 h-full rounded" id="bg6"></div>
+                            <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                                <div class="text-white">
+                                    <textarea class="w-1 opacity-0" id="hexCode6">#fe9920</textarea>
+                                </div>
+                                <div>
+                                    <button class="btn" onclick="copyMeOnClipboard(hexCode6)">
+                                        Copy
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full h-20 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                        <div class="flex items-center h-full">
+                            <div class="w-1/2 h-full rounded" id="bg7"></div>
+                            <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                                <div class="text-white">
+                                    <textarea class="w-1 opacity-0" id="hexCode7">#6169ef</textarea>
+                                </div>
+                                <div>
+                                    <button class="btn" onclick="copyMeOnClipboard(hexCode7)">
+                                        Copy
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full h-20 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                        <div class="flex items-center h-full">
+                            <div class="w-1/2 h-full rounded" id="bg8"></div>
+                            <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                                <div class="text-white">
+                                    <textarea class="w-1 opacity-0" id="hexCode8">#c60f7b</textarea>
+                                </div>
+                                <div>
+                                    <button class="btn" onclick="copyMeOnClipboard(hexCode8)">
+                                        Copy
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full h-20 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                        <div class="flex items-center h-full">
+                            <div class="w-1/2 h-full rounded" id="bg9"></div>
+                            <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                                <div class="text-white">
+                                    <textarea class="w-1 opacity-0" id="hexCode9">#04e824</textarea>
+                                </div>
+                                <div>
+                                    <button class="btn" onclick="copyMeOnClipboard(hexCode9)">
+                                        Copy
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full h-20 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                        <div class="flex items-center h-full">
+                            <div class="w-1/2 h-full rounded" id="bg10"></div>
+                            <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                                <div class="text-white">
+                                    <textarea class="w-1 opacity-0" id="hexCode10">#c0d684</textarea>
+                                </div>
+                                <div>
+                                    <button class="btn" onclick="copyMeOnClipboard(hexCode10)">
+                                        Copy
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full h-20 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                        <div class="flex items-center h-full">
+                            <div class="w-1/2 h-full rounded" id="bg11"></div>
+                            <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                                <div class="text-white">
+                                    <textarea class="w-1 opacity-0" id="hexCode11">#f56416</textarea>
+                                </div>
+                                <div>
+                                    <button class="btn" onclick="copyMeOnClipboard(hexCode11)">
+                                        Copy
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full h-20 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                        <div class="flex items-center h-full">
+                            <div class="w-1/2 h-full rounded" id="bg12"></div>
+                            <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                                <div class="text-white">
+                                    <textarea class="w-1 opacity-0" id="hexCode12">#8e94f2</textarea>
+                                </div>
+                                <div>
+                                    <button class="btn" onclick="copyMeOnClipboard(hexCode12)">
+                                        Copy
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full h-20 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                        <div class="flex items-center h-full">
+                            <div class="w-1/2 h-full rounded" id="bg13"></div>
+                            <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                                <div class="text-white">
+                                    <textarea class="w-1 opacity-0" id="hexCode13">#a167a5</textarea>
+                                </div>
+                                <div>
+                                    <button class="btn" onclick="copyMeOnClipboard(hexCode13)">
+                                        Copy
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full h-20 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                        <div class="flex items-center h-full">
+                            <div class="w-1/2 h-full rounded" id="bg14"></div>
+                            <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                                <div class="text-white">
+                                    <textarea class="w-1 opacity-0" id="hexCode14">#02a9ea</textarea>
+                                </div>
+                                <div>
+                                    <button class="btn" onclick="copyMeOnClipboard(hexCode14)">
+                                        Copy
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full h-20 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                        <div class="flex items-center h-full">
+                            <div class="w-1/2 h-full rounded" id="bg15"></div>
+                            <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                                <div class="text-white">
+                                    <textarea class="w-1 opacity-0" id="hexCode15">#f10b7d</textarea>
+                                </div>
+                                <div>
+                                    <button class="btn" onclick="copyMeOnClipboard(hexCode15)">
+                                        Copy
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="w-full h-20 p-2 bg-transparent rounded lg:hidden">
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- ----------------------------------------------------------------------- -->
+        <!--                           gradient part here                                                                                       -->
+        <!-- ----------------------------------------------------------------------- -->
+
+        <section id="gradientPart" class="hidden w-full h-screen overflow-scroll bg-gray-200 dark:bg-gray-500">
+            <div class="grad-grid">
+                <div class="w-full h-32 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                    <div class="flex items-center h-full">
+                        <div class="w-1/2 h-full rounded" id="gd1"></div>
+                        <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                            <div class="text-white">
+                                <textarea readonly class="w-1 opacity-0" id="gradCode1">
+linear-gradient(95deg, #b3bfee, #185294)</textarea>
+                            </div>
+                            <div>
+                                <button class="btn" onclick="copyMeOnClipboard(gradCode1)">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-32 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                    <div class="flex items-center h-full">
+                        <div class="w-1/2 h-full rounded" id="gd2"></div>
+                        <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                            <div class="text-white">
+                                <textarea readonly class="w-1 opacity-0" id="gradCode2">
+linear-gradient(110deg, #df29d1, #cbe3e7)</textarea>
+                            </div>
+                            <div>
+                                <button class="btn" onclick="copyMeOnClipboard(gradCode2)">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-32 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                    <div class="flex items-center h-full">
+                        <div class="w-1/2 h-full rounded" id="gd3"></div>
+                        <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                            <div class="text-white">
+                                <textarea readonly class="w-1 opacity-0" id="gradCode3">
+linear-gradient(113deg, #0bd1cc, #a6ebba)</textarea>
+                            </div>
+                            <div>
+                                <button class="btn" onclick="copyMeOnClipboard(gradCode3)">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-32 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                    <div class="flex items-center h-full">
+                        <div class="w-1/2 h-full rounded" id="gd4"></div>
+                        <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                            <div class="text-white">
+                                <textarea readonly class="w-1 opacity-0" id="gradCode4">
+linear-gradient(330deg, #e581a4, #9a0a03)</textarea>
+                            </div>
+                            <div>
+                                <button class="btn" onclick="copyMeOnClipboard(gradCode4)">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-32 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                    <div class="flex items-center h-full">
+                        <div class="w-1/2 h-full rounded" id="gd5"></div>
+                        <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                            <div class="text-white">
+                                <textarea readonly class="w-1 opacity-0" id="gradCode5">
+linear-gradient(244deg, #ec7e76, #98126e)</textarea>
+                            </div>
+                            <div>
+                                <button class="btn" onclick="copyMeOnClipboard(gradCode5)">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-32 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                    <div class="flex items-center h-full">
+                        <div class="w-1/2 h-full rounded" id="gd6"></div>
+                        <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                            <div class="text-white">
+                                <textarea readonly class="w-1 opacity-0" id="gradCode6">
+linear-gradient(306deg, #1de4a4, #dadf4a)</textarea>
+                            </div>
+                            <div>
+                                <button class="btn" onclick="copyMeOnClipboard(gradCode6)">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-32 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                    <div class="flex items-center h-full">
+                        <div class="w-1/2 h-full rounded" id="gd7"></div>
+                        <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                            <div class="text-white">
+                                <textarea readonly class="w-1 opacity-0" id="gradCode7">
+linear-gradient(191deg, #567cb2, #79d4f8)</textarea>
+                            </div>
+                            <div>
+                                <button class="btn" onclick="copyMeOnClipboard(gradCode7)">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-32 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                    <div class="flex items-center h-full">
+                        <div class="w-1/2 h-full rounded" id="gd8"></div>
+                        <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                            <div class="text-white">
+                                <textarea readonly class="w-1 opacity-0" id="gradCode8">
+linear-gradient(225deg, #f4ef75, #fb6569)</textarea>
+                            </div>
+                            <div>
+                                <button class="btn" onclick="copyMeOnClipboard(gradCode8)">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-32 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                    <div class="flex items-center h-full">
+                        <div class="w-1/2 h-full rounded" id="gd9"></div>
+                        <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                            <div class="text-white">
+                                <textarea readonly class="w-1 opacity-0" id="gradCode9">
+linear-gradient(118deg, #a9a0d2, #fd4f66)</textarea>
+                            </div>
+                            <div>
+                                <button class="btn" onclick="copyMeOnClipboard(gradCode9)">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-32 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                    <div class="flex items-center h-full">
+                        <div class="w-1/2 h-full rounded" id="gd10"></div>
+                        <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                            <div class="text-white">
+                                <textarea readonly class="w-1 opacity-0" id="gradCode10">
+linear-gradient(118deg, #a9a0d2, #4ffd66)</textarea>
+                            </div>
+                            <div>
+                                <button class="btn" onclick="copyMeOnClipboard(gradCode10)">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-32 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                    <div class="flex items-center h-full">
+                        <div class="w-1/2 h-full rounded" id="gd11"></div>
+                        <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                            <div class="text-white">
+                                <textarea readonly class="w-1 opacity-0" id="gradCode11">
+linear-gradient(198deg, #3ab1e8, #9622c6)</textarea>
+                            </div>
+                            <div>
+                                <button class="btn" onclick="copyMeOnClipboard(gradCode11)">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-32 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                    <div class="flex items-center h-full">
+                        <div class="w-1/2 h-full rounded" id="gd12"></div>
+                        <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                            <div class="text-white">
+                                <textarea readonly class="w-1 opacity-0" id="gradCode12">
+linear-gradient(49deg, #03456b, #28d894)</textarea>
+                            </div>
+                            <div>
+                                <button class="btn" onclick="copyMeOnClipboard(gradCode12)">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-32 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                    <div class="flex items-center h-full">
+                        <div class="w-1/2 h-full rounded" id="gd13"></div>
+                        <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                            <div class="text-white">
+                                <textarea readonly class="w-1 opacity-0" id="gradCode13">
+inear-gradient(112deg, #f30cbc, #5f0b3b)</textarea>
+                            </div>
+                            <div>
+                                <button class="btn" onclick="copyMeOnClipboard(gradCode13)">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-32 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                    <div class="flex items-center h-full">
+                        <div class="w-1/2 h-full rounded" id="gd14"></div>
+                        <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                            <div class="text-white">
+                                <textarea readonly class="w-1 opacity-0" id="gradCode14">
+linear-gradient(95deg, #b3bfee, #185294)</textarea>
+                            </div>
+                            <div>
+                                <button class="btn" onclick="copyMeOnClipboard(gradCode14)">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-32 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                    <div class="flex items-center h-full">
+                        <div class="w-1/2 h-full rounded" id="gd15"></div>
+                        <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                            <div class="text-white">
+                                <textarea readonly class="w-1 opacity-0" id="gradCode15">
+linear-gradient(227deg, #44fc62, #f0f9c7)</textarea>
+                            </div>
+                            <div>
+                                <button class="btn" onclick="copyMeOnClipboard(gradCode15)">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full h-20 p-2 bg-transparent rounded lg:hidden">
+                </div>
+            </div>
+        </section>
+
+        <!-- ----------------------------------------------------------------------- -->
+        <!--                        Radial Gradient part here                                                                              -->
+        <!-- ----------------------------------------------------------------------- -->
+        <section id="radialGradientPart" class="hidden w-full h-screen overflow-scroll bg-gray-200 dark:bg-gray-500">
+            <div class="grad-grid">
+                <div class="w-full h-32 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                    <div class="flex items-center h-full">
+                        <div class="w-1/2 h-full rounded" id="rd1"></div>
+                        <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                            <div class="text-white">
+                                <textarea readonly class="w-1 opacity-0" id="radCode1">
+radial-gradient(ellipse at bottom, #19f6b4, transparent),
+                                    radial-gradient(ellipse at bottom, #abecba, transparent)</textarea>
+                            </div>
+                            <div>
+                                <button class="btn" onclick="copyMeOnClipboard(radCode1)">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-32 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                    <div class="flex items-center h-full">
+                        <div class="w-1/2 h-full rounded" id="rd2"></div>
+                        <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                            <div class="text-white">
+                                <textarea readonly class="w-1 opacity-0" id="radCode2">
+radial-gradient(ellipse at left, #21d7e6, transparent),
+                                    radial-gradient(ellipse at left, #6464e5, transparent)</textarea>
+                            </div>
+                            <div>
+                                <button class="btn" onclick="copyMeOnClipboard(radCode2)">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-32 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                    <div class="flex items-center h-full">
+                        <div class="w-1/2 h-full rounded" id="rd3"></div>
+                        <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                            <div class="text-white">
+                                <textarea readonly class="w-1 opacity-0" id="radCode3">
+radial-gradient(ellipse at top, #d15ab0, transparent),
+                                    radial-gradient(ellipse at top, #f8d111, transparent)</textarea>
+                            </div>
+                            <div>
+                                <button class="btn" onclick="copyMeOnClipboard(radCode3)">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-32 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                    <div class="flex items-center h-full">
+                        <div class="w-1/2 h-full rounded" id="rd4"></div>
+                        <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                            <div class="text-white">
+                                <textarea readonly class="w-1 opacity-0" id="radCode4">
+radial-gradient(ellipse at bottom, #ff60b2, transparent),
+                                    radial-gradient(ellipse at bottom, #f4fe8b, transparent)</textarea>
+                            </div>
+                            <div>
+                                <button class="btn" onclick="copyMeOnClipboard(radCode4)">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-32 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                    <div class="flex items-center h-full">
+                        <div class="w-1/2 h-full rounded" id="rd5"></div>
+                        <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                            <div class="text-white">
+                                <textarea readonly class="w-1 opacity-0" id="radCode5">
+radial-gradient(ellipse at bottom, #fca3cf, transparent),
+                                    radial-gradient(ellipse at bottom, #c4006d, transparent)</textarea>
+                            </div>
+                            <div>
+                                <button class="btn" onclick="copyMeOnClipboard(radCode5)">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-32 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                    <div class="flex items-center h-full">
+                        <div class="w-1/2 h-full rounded" id="rd6"></div>
+                        <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                            <div class="text-white">
+                                <textarea readonly class="w-1 opacity-0" id="radCode6">
+radial-gradient(ellipse at bottom, #185fa3, transparent),
+                                    radial-gradient(ellipse at bottom, #595796, transparent)</textarea>
+                            </div>
+                            <div>
+                                <button class="btn" onclick="copyMeOnClipboard(radCode6)">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-32 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                    <div class="flex items-center h-full">
+                        <div class="w-1/2 h-full rounded" id="rd7"></div>
+                        <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                            <div class="text-white">
+                                <textarea readonly class="w-1 opacity-0" id="radCode7">
+radial-gradient(ellipse at right, #27c8bc, transparent),
+                                    radial-gradient(ellipse at right, #3b2c06, transparent)</textarea>
+                            </div>
+                            <div>
+                                <button class="btn" onclick="copyMeOnClipboard(radCode7)">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-32 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                    <div class="flex items-center h-full">
+                        <div class="w-1/2 h-full rounded" id="rd8"></div>
+                        <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                            <div class="text-white">
+                                <textarea readonly class="w-1 opacity-0" id="radCode8">
+radial-gradient(ellipse at left, #525ed1, transparent),
+                                    radial-gradient(ellipse at left, #ff7ef1, transparent)</textarea>
+                            </div>
+                            <div>
+                                <button class="btn" onclick="copyMeOnClipboard(radCode8)">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-32 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                    <div class="flex items-center h-full">
+                        <div class="w-1/2 h-full rounded" id="rd9"></div>
+                        <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                            <div class="text-white">
+                                <textarea readonly class="w-1 opacity-0" id="radCode9">
+radial-gradient(ellipse at bottom, #b1e84d, transparent),
+                                    radial-gradient(ellipse at bottom, #b8ff55, transparent)</textarea>
+                            </div>
+                            <div>
+                                <button class="btn" onclick="copyMeOnClipboard(radCode9)">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-32 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                    <div class="flex items-center h-full">
+                        <div class="w-1/2 h-full rounded" id="rd10"></div>
+                        <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                            <div class="text-white">
+                                <textarea readonly class="w-1 opacity-0" id="radCode10">
+radial-gradient(ellipse at bottom, #f41c68, transparent),
+                                    radial-gradient(ellipse at bottom, #e94ba0, transparent)</textarea>
+                            </div>
+                            <div>
+                                <button class="btn" onclick="copyMeOnClipboard(radCode10)">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-32 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                    <div class="flex items-center h-full">
+                        <div class="w-1/2 h-full rounded" id="rd11"></div>
+                        <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                            <div class="text-white">
+                                <textarea readonly class="w-1 opacity-0" id="radCode11">
+radial-gradient(ellipse at bottom, #a41bf0, transparent),
+                                    radial-gradient(ellipse at bottom, #6e4292, transparent)</textarea>
+                            </div>
+                            <div>
+                                <button class="btn" onclick="copyMeOnClipboard(radCode11)">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-32 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                    <div class="flex items-center h-full">
+                        <div class="w-1/2 h-full rounded" id="rd12"></div>
+                        <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                            <div class="text-white">
+                                <textarea readonly class="w-1 opacity-0" id="radCode12">
+radial-gradient(ellipse at right, #f744ae, transparent),
+                                    radial-gradient(ellipse at right, #1a66b4, transparent)</textarea>
+                            </div>
+                            <div>
+                                <button class="btn" onclick="copyMeOnClipboard(radCode12)">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-32 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                    <div class="flex items-center h-full">
+                        <div class="w-1/2 h-full rounded" id="rd13"></div>
+                        <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                            <div class="text-white">
+                                <textarea readonly class="w-1 opacity-0" id="radCode13">
+radial-gradient(ellipse at top, #3dd6ab, transparent),
+                                    radial-gradient(ellipse at top, #5590f1, transparent)</textarea>
+                            </div>
+                            <div>
+                                <button class="btn" onclick="copyMeOnClipboard(radCode13)">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-32 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                    <div class="flex items-center h-full">
+                        <div class="w-1/2 h-full rounded" id="rd14"></div>
+                        <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                            <div class="text-white">
+                                <textarea readonly class="w-1 opacity-0" id="radCode14">
+radial-gradient(ellipse at bottom, #19f6b4, transparent),
+                                    radial-gradient(ellipse at bottom, #abecba, transparent)</textarea>
+                            </div>
+                            <div>
+                                <button class="btn" onclick="copyMeOnClipboard(radCode14)">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-32 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                    <div class="flex items-center h-full">
+                        <div class="w-1/2 h-full rounded" id="rd15"></div>
+                        <div class="flex items-center justify-center w-1/2 h-10 p-0">
+                            <div class="text-white">
+                                <textarea readonly class="w-1 opacity-0" id="radCode15">
+radial-gradient(ellipse at right, #4699e9, transparent),
+                                    radial-gradient(ellipse at right, #1f61ef, transparent)</textarea>
+                            </div>
+                            <div>
+                                <button class="btn" onclick="copyMeOnClipboard(radCode15)">
+                                    Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full h-20 p-2 bg-transparent rounded lg:hidden">
+                </div>
+            </div>
+        </section>
+
+        <!-- ----------------------------------------------------------------------- -->
+        <!--                              RGB Gen Part                                                                                              -->
+        <!-- ----------------------------------------------------------------------- -->
+        <section class="hidden w-full h-screen bg-gray-300 dark:bg-gray-700 dark:text-gray-200" id="RGBpart">
+            <div class="flex-col hidden w-full text-center lg:flex">
+                <h1 class="pt-10 text-5xl font-medium">Hex To RGB Convertor</h1>
+                <p class="mx-auto mt-5 text-base leading-relaxed lg:w-2/3">
+                    Convert Hex Code to RGB Code
+                </p>
+            </div>
+            <div class="flex items-center justify-center px-5 py-20 md:px-48">
+                <div class="w-full overflow-hidden rounded shadow-xl md:flex">
+                    <div id="chart" class="flex items-center w-full px-5 pt-8 pb-4 text-white bg-indigo-500 md:w-1/2">
+                        <canvas class="w-full md:py-10"> </canvas>
+                    </div>
+                    <div class="flex items-center w-full p-10 text-gray-600 bg-gray-100 md:w-1/2 dark:bg-gray-900">
+                        <div class="w-full">
+                            <h3 class="text-lg font-semibold leading-tight text-gray-800 dark:text-gray-100">
+                                Enter The Hex Value
+                            </h3>
+                            <h6 class="mb-2 text-sm leading-tight">
+                                <input type="text" id="inputHex" value="#6366F1"
+                                    class="w-full p-2 text-3xl font-bold rounded-md h-14 focus:outline-none" />
+                            </h6>
+                            <h3 class="text-lg font-semibold leading-tight text-gray-800 dark:text-gray-100">
+                                Output
+                            </h3>
+                            <h6 class="mb-2 text-sm leading-tight">
+                                <input readonly type="text" id="outputRGB" value="54,111,0"
+                                    class="w-full p-2 text-3xl font-bold rounded-md h-14 focus:outline-none" />
+                            </h6>
+                            <div class="flex items-center justify-around text-center mt-7">
+                                <button class="gen-btn" id="RGBgen">Convert</button>
+                                <button class="btn" onclick="copyMeOnClipboard(outputRGB)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20"
+                                        fill="currentColor">
+                                        <path
+                                            d="M9 2a2 2 0 00-2 2v8a2 2 0 002 2h6a2 2 0 002-2V6.414A2 2 0 0016.414 5L14 2.586A2 2 0 0012.586 2H9z" />
+                                        <path d="M3 8a2 2 0 012-2v10h8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="hidden w-full h-auto bg-gray-300 dark:bg-gray-500 dark:text-gray-200" id="Palletepart">
+            <section class="w-full h-auto">
+                <div class="color-grid">
+
+
+                    <div class="w-full h-20 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                        <div class="flex items-center h-full">
+                            <div style="background:#3A3042" class="w-1/2 h-full cursor-pointer" id="p1"
+                                onclick="copyMeOnClipboard(palCode1)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode1">#3A3042</textarea>
+                                </div>
+                            </div>
+                            <div style="background:#eff30a" class="w-1/2 h-full cursor-pointer" id="p2"
+                                onclick="copyMeOnClipboard(palCode2)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode2">#eff30a</textarea>
+                                </div>
+                            </div>
+                            <div style="background:#8d12f1" class="w-1/2 h-full cursor-pointer" id="p3"
+                                onclick="copyMeOnClipboard(palCode3)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode3">#8d12f1</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full h-20 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                        <div class="flex items-center h-full">
+                            <div style="background:#FFFFFF" class="w-1/2 h-full cursor-pointer" id="p4"
+                                onclick="copyMeOnClipboard(palCode4)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode4">#FFFFFF</textarea>
+                                </div>
+                            </div>
+                            <div style="background:#EF8354" class="w-1/2 h-full cursor-pointer" id="p5"
+                                onclick="copyMeOnClipboard(palCode5)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode5">#EF8354</textarea>
+                                </div>
+                            </div>
+                            <div style="background:#B2DDF7" class="w-1/2 h-full cursor-pointer" id="p6"
+                                onclick="copyMeOnClipboard(palCode6)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode6">#B2DDF7</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full h-20 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                        <div class="flex items-center h-full">
+                            <div style="background:#EB4B98" class="w-1/2 h-full cursor-pointer" id="p7" onclick="
+                                copyMeOnClipboard(palCode7)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0 ">
+                                    <textarea class="w-1 opacity-0" id="palCode7">#EB4B98</textarea>
+                                </div>
+                            </div>
+                            <div style="background:#5158BB" class="w-1/2 h-full cursor-pointer " id="p8"
+                                onclick="copyMeOnClipboard(palCode8)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode8">#5158BB</textarea>
+                                </div>
+                            </div>
+                            <div style="background:#B2FFA8" class="w-1/2 h-full cursor-pointer" id="p9"
+                                onclick="copyMeOnClipboard(palCode9)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode9">#B2FFA8</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full h-20 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                        <div class="flex items-center h-full">
+                            <div style="background:#44E34C" class="w-1/2 h-full cursor-pointer" id="p10"
+                                onclick="copyMeOnClipboard(palCode10)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode10">#44E34C</textarea>
+                                </div>
+                            </div>
+                            <div style="background:#2E132D" class="w-1/2 h-full cursor-pointer" id="p11"
+                                onclick="copyMeOnClipboard(palCode11)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode11">#2E132D</textarea>
+                                </div>
+                            </div>
+                            <div style="background:#298F2E" class="w-1/2 h-full cursor-pointer" id="p12"
+                                onclick="copyMeOnClipboard(palCode12)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode12">#298F2E</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full h-20 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                        <div class="flex items-center h-full">
+                            <div style="background:#11A878" class="w-1/2 h-full cursor-pointer" id="p13"
+                                onclick="copyMeOnClipboard(palCode13)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode13">#11A878</textarea>
+                                </div>
+                            </div>
+                            <div style="background:#3BEDB5" class="w-1/2 h-full cursor-pointer" id="p14"
+                                onclick="copyMeOnClipboard(palCode14)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode14">#3BEDB5</textarea>
+                                </div>
+                            </div>
+                            <div style="background:#49A688" class="w-1/2 h-full cursor-pointer" id="p15"
+                                onclick="copyMeOnClipboard(palCode15)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode15">#49A688</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full h-20 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                        <div class="flex items-center h-full">
+                            <div style="background:#BEE344" class="w-1/2 h-full cursor-pointer" id="p16"
+                                onclick="copyMeOnClipboard(palCode16)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode16">#BEE344</textarea>
+                                </div>
+                            </div>
+                            <div style="background:#6E8A15" class="w-1/2 h-full cursor-pointer" id="p17"
+                                onclick="copyMeOnClipboard(palCode17)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode17">#6E8A15</textarea>
+                                </div>
+                            </div>
+                            <div style="background:#7F5AFA" class="w-1/2 h-full cursor-pointer" id="p18"
+                                onclick="copyMeOnClipboard(palCode18)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode18">#7F5AFA</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full h-20 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                        <div class="flex items-center h-full">
+                            <div style="background:#0F072E" class="w-1/2 h-full cursor-pointer" id="p19"
+                                onclick="copyMeOnClipboard(palCode19)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode19">#0F072E</textarea>
+                                </div>
+                            </div>
+                            <div style="background:#462E9E" class="w-1/2 h-full cursor-pointer" id="p20"
+                                onclick="copyMeOnClipboard(palCode20)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode20">#462E9E</textarea>
+                                </div>
+                            </div>
+                            <div style="background:#C6F714" class="w-1/2 h-full cursor-pointer" id="p21"
+                                onclick="copyMeOnClipboard(palCode21)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode21">#C6F714</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full h-20 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                        <div class="flex items-center h-full">
+                            <div style="background:#D10679" class="w-1/2 h-full cursor-pointer" id="p22"
+                                onclick="copyMeOnClipboard(palCode22)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode22">#D10679</textarea>
+                                </div>
+                            </div>
+                            <div style="background:#1CD96E" class="w-1/2 h-full cursor-pointer" id="p23"
+                                onclick="copyMeOnClipboard(palCode23)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode23">#1CD96E</textarea>
+                                </div>
+                            </div>
+                            <div style="background:#79F7B0" class="w-1/2 h-full cursor-pointer" id="p24"
+                                onclick="copyMeOnClipboard(palCode24)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode24">#79F7B0</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full h-20 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                        <div class="flex items-center h-full">
+                            <div style="background:#F7C6DB" class="w-1/2 h-full cursor-pointer" id="p25"
+                                onclick="copyMeOnClipboard(palCode25)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode25">#F7C6DB</textarea>
+                                </div>
+                            </div>
+                            <div style="background:#F58EBB" class="w-1/2 h-full cursor-pointer" id="p26"
+                                onclick="copyMeOnClipboard(palCode26)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode26">#F58EBB</textarea>
+                                </div>
+                            </div>
+                            <div style="background:#D986AA" class="w-1/2 h-full cursor-pointer" id="p27"
+                                onclick="copyMeOnClipboard(palCode27)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode27">#D986AA</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full h-20 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                        <div class="flex items-center h-full">
+                            <div style="background:#BFD3E0" class="w-1/2 h-full cursor-pointer" id="p28"
+                                onclick="copyMeOnClipboard(palCode28)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode28"></textarea>
+                                </div>
+                            </div>
+                            <div style="background:#D48D5D" class="w-1/2 h-full cursor-pointer" id="p29"
+                                onclick="copyMeOnClipboard(palCode29)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode29"></textarea>
+                                </div>
+                            </div>
+                            <div style="background:#8BCFFC" class="w-1/2 h-full cursor-pointer" id="p30"
+                                onclick="copyMeOnClipboard(palCode30)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode30"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full h-20 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                        <div class="flex items-center h-full">
+                            <div style="background:#4E5950" class="w-1/2 h-full cursor-pointer" id="p31"
+                                onclick="copyMeOnClipboard(palCode31)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode31">#4E5950</textarea>
+                                </div>
+                            </div>
+                            <div style="background:#11F041" class="w-1/2 h-full cursor-pointer" id="p32"
+                                onclick="copyMeOnClipboard(palCode32)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode32">#11F041</textarea>
+                                </div>
+                            </div>
+                            <div style="background:#E81ABB" class="w-1/2 h-full cursor-pointer" id="p33"
+                                onclick="copyMeOnClipboard(palCode33)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode33">#E81ABB</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full h-20 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                        <div class="flex items-center h-full">
+                            <div style="background:#960971" class="w-1/2 h-full cursor-pointer" id="p34"
+                                onclick="copyMeOnClipboard(palCode34)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode34">#960971</textarea>
+                                </div>
+                            </div>
+                            <div style="background:#F01AB7" class="w-1/2 h-full cursor-pointer" id="p35"
+                                onclick="copyMeOnClipboard(palCode35)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode35">#F01AB7</textarea>
+                                </div>
+                            </div>
+                            <div style="background:#89F0A4" class="w-1/2 h-full cursor-pointer" id="p36"
+                                onclick="copyMeOnClipboard(palCode36)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode36">#89F0A4</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full h-20 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                        <div class="flex items-center h-full">
+                            <div style="background:#A7CF8C" class="w-1/2 h-full cursor-pointer" id="p37"
+                                onclick="copyMeOnClipboard(palCode37)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode37">#A7CF8C</textarea>
+                                </div>
+                            </div>
+                            <div style="background:#77AB54" class="w-1/2 h-full cursor-pointer" id="p38"
+                                onclick="copyMeOnClipboard(palCode38)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode38">#77AB54</textarea>
+                                </div>
+                            </div>
+                            <div style="background:#650BA1" class="w-1/2 h-full cursor-pointer" id="p39"
+                                onclick="copyMeOnClipboard(palCode39)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode39">#650BA1</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full h-20 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                        <div class="flex items-center h-full">
+                            <div style="background:#75BEFA" class="w-1/2 h-full cursor-pointer" id="p40"
+                                onclick="copyMeOnClipboard(palCode40)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode40">#75BEFA</textarea>
+                                </div>
+                            </div>
+                            <div style="background:#D48646" class="w-1/2 h-full cursor-pointer" id="p41"
+                                onclick="copyMeOnClipboard(palCode41)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode41">#D48646</textarea>
+                                </div>
+                            </div>
+                            <div style="background:#5E4B3A" class="w-1/2 h-full cursor-pointer" id="p42"
+                                onclick="copyMeOnClipboard(palCode42)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode42">#5E4B3A</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full h-20 p-2 bg-gray-100 rounded dark:bg-gray-700">
+                        <div class="flex items-center h-full">
+                            <div style="background:#3BE4ED" class="w-1/2 h-full cursor-pointer" id="p43"
+                                onclick="copyMeOnClipboard(palCode43)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode43">#3BE4ED</textarea>
+                                </div>
+                            </div>
+                            <div style="background:#5DC9CF" class="w-1/2 h-full cursor-pointer" id="p44"
+                                onclick="copyMeOnClipboard(palCode44)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode44">#5DC9CF</textarea>
+                                </div>
+                            </div>
+                            <div style="background:#D64C45" class="w-1/2 h-full cursor-pointer" id="p45"
+                                onclick="copyMeOnClipboard(palCode45)">
+                                <div class="flex items-center justify-center w-1/5 h-10 p-0">
+                                    <textarea class="w-1 opacity-0" id="palCode45">#D64C45</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full h-20 p-2 bg-transparent rounded lg:hidden">
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+</body>
+<script src=" app.js">
+</script>
+
+</html>
